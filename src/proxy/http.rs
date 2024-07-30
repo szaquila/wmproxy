@@ -38,7 +38,7 @@ struct Operate {
 }
 
 impl Operate {
-    
+
     pub fn check_basic_auth(&self, value: &str) -> bool
     {
         use base64::engine::general_purpose;
@@ -78,7 +78,7 @@ impl Operate {
         }
         Ok(())
     }
-    
+
     fn deal_response(&self, res: &mut RecvResponse) -> ProtResult<()> {
         if let Some(headers) = &self.headers {
             // 复写Request的头文件信息
@@ -171,7 +171,7 @@ impl ProxyHttp {
     where
         T: AsyncRead + AsyncWrite + Unpin,
     {
-        // 预读数据找出对应的协议 
+        // 预读数据找出对应的协议
         let mut buffer = BinaryMut::with_capacity(24);
         let size = {
             let mut buf = ReadBuf::uninit(buffer.chunk_mut());
@@ -195,7 +195,7 @@ impl ProxyHttp {
         if buffer.as_slice()[0] == b'C' || buffer.as_slice()[0] == b'c' {
             max_req_num = 1;
         }
-        
+
         // 需要将已读的数据buffer重新加到server的已读cache中, 否则解析会出错
         let mut server = Server::new_by_cache(inbound, None, buffer);
         // 构建HTTP服务回调

@@ -29,7 +29,7 @@ pub struct LocationConfig {
     #[serde(deserialize_with = "string_or_struct")]
     pub rule: Matcher,
     pub file_server: Option<FileServer>,
-    
+
     #[serde_as(as = "Option<DisplayFromStr>")]
     pub static_response: Option<StaticResponse>,
 
@@ -65,7 +65,7 @@ impl Hash for LocationConfig {
         if let Some(method) = &self.method {
             state.write(method.as_bytes());
         }
-        state.finish();
+        let _ = state.finish();
     }
 }
 
@@ -115,7 +115,7 @@ impl LocationConfig {
             Err(_) => false,
             Ok(b) => b,
         }
-        
+
     }
 
     async fn deal_client(

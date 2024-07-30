@@ -30,10 +30,7 @@ use tokio::{
 use tokio_rustls::{rustls, TlsAcceptor};
 
 use crate::{
-    option::ConfigOption,
-    proxy::ProxyServer,
-    reverse::{HttpConfig, ServerConfig, StreamConfig, StreamUdp},
-    ActiveHealth, CenterClient, CenterServer, CenterTrans, Helper, OneHealth, ProxyResult,
+    option::ConfigOption, proxy::ProxyServer, reverse::{HttpConfig, ServerConfig, StreamConfig, StreamUdp}, ActiveHealth, CenterClient, CenterServer, CenterTrans, Helper, OneHealth, ProxyResult
 };
 
 /// 核心处理类

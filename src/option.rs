@@ -211,6 +211,11 @@ pub struct ProxyConfig {
     #[serde_as(as = "Option<DisplayFromStr>")]
     pub(crate) bind: Option<WrapAddr>,
 
+    /// 代理绑定端口地址
+    #[bpaf(short('I'), long)]
+    #[serde_as(as = "Option<DisplayFromStr>")]
+    pub(crate) iface: Option<String>,
+
     /// 中心代理绑定端口地址
     #[bpaf(short('c'), long)]
     #[serde_as(as = "Option<DisplayFromStr>")]
@@ -318,6 +323,7 @@ impl Default for ProxyConfig {
             flag: Flag::HTTP | Flag::HTTPS | Flag::SOCKS5,
             // mode: "client".to_string(),
             bind: Some(WrapAddr(default_bind_addr())),
+			iface: None,
             center_addr: None,
             server: None,
             username: None,
