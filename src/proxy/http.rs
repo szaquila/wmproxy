@@ -171,6 +171,7 @@ impl ProxyHttp {
     where
         T: AsyncRead + AsyncWrite + Unpin,
     {
+		log::warn!("代理对应的协议");
         // 预读数据找出对应的协议
         let mut buffer = BinaryMut::with_capacity(24);
         let size = {
